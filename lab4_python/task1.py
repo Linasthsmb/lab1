@@ -1,16 +1,13 @@
 import json
 
 
-FILENAME = "input.json"
+def task() -> float:
+    s = 0.0
+    with open("input.json", 'r') as f:
+        data = json.load(f)
+        for i in data:
+            s += i["score"] * i["weight"]
+    return round(s, 3)
 
 
-def task() -> dict:
-     #TODO считать содержимое JSON файла
-    with open(FILENAME) as f:
-        json_data = json.load(f)
-    return max(json_data, key = lambda s: s["score"])
-     #TODO найти максимальный элемент по ключу score
-
-
-if __name__ == '__main__':
-    print(task())
+print(task())
